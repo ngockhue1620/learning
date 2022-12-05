@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from pydoc import visiblename
+from rest_framework import viewsets
 
-# Create your views here.
+from .serializers import ExamSerializer, QuestionSerializer
+from .models import Exam, Question
+
+class ExamViewSet(viewsets.ModelViewSet):
+  queryset= Exam.objects.all()
+  serializer_class = ExamSerializer
+
+class QuestionViewSet(viewsets.ModelViewSet):
+  queryset= Question.objects.all()
+  serializer_class = QuestionSerializer

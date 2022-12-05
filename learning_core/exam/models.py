@@ -29,7 +29,7 @@ class Question(TimeStampModel, models.Model):
   description = models.TextField()
   type = models.IntegerField()
   status = models.IntegerField()
-  image = models.TextField()
+  image = models.TextField(blank=True, null =True)
   right_answer = models.CharField(max_length=255)
   created_by = models.ForeignKey(User, related_name='questions_of_user', on_delete=models.SET_NULL, null=True)
 
@@ -49,4 +49,4 @@ class QuestionExam(TimeStampModel, models.Model):
 class Answer(models.Model):
   content = models.TextField()
   question = models.ForeignKey(Question, related_name="answers", on_delete=models.CASCADE)
-  image = models.TextField()
+  image = models.TextField(blank=True, null =True)
